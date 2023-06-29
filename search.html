@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Find an Event
+{% endblock %}
+
+
+{% block main %}
+<form action="/search" method="post">
+    <div class="mb-3">
+         <select class="form-select mx-auto w-auto" name="org_name">
+            <option disabled="" selected="">Organization</option>
+            {% for org in av_orgs %}
+                <option value ="{{ org.org_name }}">{{ org.org_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <select class="form-select mx-auto w-auto" name="event_type">
+            <option disabled="" selected="">Event type</option>
+            {% for org in av_types %}
+                <option value ="{{ org.event_type}}">{{ org.event_type }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        <div class="mb-3">
+            <select class="form-select mx-auto w-auto" name="date">
+                <option disabled="" selected="">Date</option>
+                {% for org in av_dates %}
+                <option value ="{{ org.date}}">{{ org.date}}</option>
+                {% endfor %}
+            </select>
+            </div>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Find</button>
+    </div>
+</form>
+{% endblock %}
